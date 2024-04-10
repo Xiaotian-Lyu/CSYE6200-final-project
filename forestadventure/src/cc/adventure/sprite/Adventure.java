@@ -156,6 +156,7 @@ public class Adventure extends Role{
         double bulletx = x;
         double bullety = y;
         switch (pdir) {
+        	//make sure the fire from the bullet do not offset
             case up:
                 bulletx = x + 25;
                 bullety = y;
