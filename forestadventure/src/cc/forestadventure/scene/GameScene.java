@@ -1,5 +1,6 @@
 package cc.forestadventure.scene;
 
+import cc.adventure.sprite.Adventure;
 import cc.forestadventure.Director;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
@@ -13,8 +14,10 @@ public class GameScene {
 	
 	private KeyProcess keyProcess = new KeyProcess();
 	private Refresh refresh = new Refresh();
+//	private Adventure selfAdventure = new Adventure(x, y, width, height, group, up, this); 
 	
 	private void paint() {
+		
 		
 	}
 	
