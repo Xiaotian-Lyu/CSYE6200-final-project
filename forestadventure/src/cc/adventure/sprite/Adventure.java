@@ -7,6 +7,7 @@ import cc.forestadventure.Director;
 import cc.forestadventure.scene.GameScene;
 import cc.forestadventure.util.Direction;
 import cc.forestadventure.util.Group;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
@@ -29,14 +30,15 @@ public class Adventure extends Role{
             imageMap.put("left", new Image("resources/adventure-left.png"));
             imageMap.put("right", new Image("resources/adventure-rigrht.png"));
         } else {
-            imageMap.put("up", new Image("image/monter-1.png"));
-            imageMap.put("down", new Image("image/monter-1.png"));
-            imageMap.put("left", new Image("image/monter-2.png"));
-            imageMap.put("right", new Image("image/monter-2.png"));
+            imageMap.put("up", new Image("resources/monter-1.png"));
+            imageMap.put("down", new Image("resources/monter-1.png"));
+            imageMap.put("left", new Image("resources/monter-2.png"));
+            imageMap.put("right", new Image("resources/monter-2.png"));
         }
 		
 	}
 
+    //different direction when user use
     public void pressed(KeyCode keyCode) {
         switch (keyCode) {
             case UP:
@@ -53,11 +55,14 @@ public class Adventure extends Role{
         }
         redirect();
     }
-
+    
+    
+    
+    //release keyborod
     public void released(KeyCode keyCode) {
         switch (keyCode) {
             case F:
-//                openFire(); do later
+                openFire(); 
                 break;
             case UP:
                 keyup = false;
@@ -106,6 +111,7 @@ public class Adventure extends Role{
             pdir = dir;
         }
 
+        //To make sure adventure not out of the border
         if(x < 0) x = 0;
         if(y < 0) y = 0;
         if(x > Director.WIDTH - width - 5) x = Director.WIDTH - width - 5;
@@ -119,11 +125,55 @@ public class Adventure extends Role{
                     dir = d[random.nextInt(d.length)];
                     break;
                 case 30:
-//                    openFire(); do later
+                    openFire(); 
                     break;
             }
         }
     }
+    
+    public void paint(GraphicsContext graphicsContext) {
+        
+        switch (pdir) {
+            case up:
+                image = imageMap.get("up");
+                break;
+            case down:
+                image = imageMap.get("down");
+                break;
+            case left:
+                image = imageMap.get("left");
+                break;
+            case right:
+                image = imageMap.get("right");
+                break;
+        }
+        super.paint(graphicsContext);
+        move();
+    }
 
+    //adventure openFire
+    public void openFire() {
+        double bulletx = x;
+        double bullety = y;
+        switch (pdir) {
+            case up:
+                bulletx = x + 25;
+                bullety = y;
+                break;
+            case down:
+                bulletx = x + 25;
+                bullety = y + height;
+                break;
+            case left:
+                bulletx = x;
+                bullety = y + 25;
+                break;
+            case right:
+                bulletx = x + width;
+                bullety = y + 25;
+
+        }
+//        gameScene.bullets.add(new Bullet(bulletx, bullety, group, pdir, gameScene));
+    }
 
 }
