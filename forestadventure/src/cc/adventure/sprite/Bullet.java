@@ -83,5 +83,7 @@ public class Bullet extends Role {
 	    
 	    public void paint(GraphicsContext graphicsContext) {
 	    	super.paint(graphicsContext);
+	    	move();
 	    }
+	    
 }
