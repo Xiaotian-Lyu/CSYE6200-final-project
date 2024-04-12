@@ -76,7 +76,7 @@ public class Bullet extends Role {
 //	        if(x > Director.WIDTH - width - 5) x = Director.WIDTH - width - 5;
 //	        if(y > Director.HEIGHT - height - 30) y = Director.HEIGHT - height - 30;
 	        if (x < 0 || y < 0 || x > Director.WIDTH || y > Director.HEIGHT) {
-//	            gameScene.bullets.remove(this);   //gameScene.not yet finish
+	            gameScene.bullets.remove(this);   
 	        }
 
 	    }

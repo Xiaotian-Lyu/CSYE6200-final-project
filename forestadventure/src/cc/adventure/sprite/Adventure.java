@@ -18,7 +18,7 @@ public class Adventure extends Role{
     double oldx, oldy;
     public static Random random = new Random();
 	
-    public Adventure(double x, double y, double width, double height, Group group, Direction dir, GameScene gameScene) {
+    public Adventure(double x, double y, Group group, Direction dir,Direction pdir, GameScene gameScene) {
 		super(x, y, 60, 60, group, dir, gameScene);
 		// the size 60-60 match the picture
 		// TODO Auto-generated constructor stub
@@ -174,7 +174,7 @@ public class Adventure extends Role{
                 bullety = y + 25;
 
         }
-//        gameScene.bullets.add(new Bullet(bulletx, bullety, group, pdir, gameScene));
+        gameScene.bullets.add(new Bullet(bulletx, bullety, group, pdir, gameScene));
     }
 
 }

@@ -1,8 +1,14 @@
 package cc.forestadventure.scene;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cc.adventure.sprite.Adventure;
 import cc.adventure.sprite.Background;
+import cc.adventure.sprite.Bullet;
 import cc.forestadventure.Director;
+import cc.forestadventure.util.Direction;
+import cc.forestadventure.util.Group;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -21,10 +27,18 @@ public class GameScene {
 	private boolean running = false;
 	
 	private Background background = new Background();
-//	private Adventure selfAdventure = new Adventure(x, y, width, height, group, up, this); 
+	private Adventure adventureself = new Adventure(949, 928, Group.green, Direction.stop, Direction.down,this);//the size of picture not sure yet
+	public List<Bullet> bullets = new ArrayList<>();
+    public List<Adventure> Adventures = new ArrayList<>();
 	
+		
 	private void paint() {
 		background.paint(graphicsContext);
+		adventureself.paint(graphicsContext);
+		
+		for(Bullet bullet : bullets) {
+			bullet.paint(graphicsContext);
+		}
 		
 	}
 	
@@ -32,6 +46,7 @@ public class GameScene {
 		AnchorPane root = new AnchorPane(canvas);
 		stage.getScene().setRoot(root);
 		stage.getScene().setOnKeyReleased(keyProcess);
+		stage.getScene().setOnKeyPressed(keyProcess);
 		running = true;
 		refresh.start();
 	}
@@ -50,16 +65,26 @@ public class GameScene {
 		}
 	}
 	
-	private class KeyProcess implements EventHandler<KeyEvent>{
-		@Override
-		public void handle(KeyEvent event) {
-			KeyCode keyCode = event.getCode();
-			if(keyCode.equals(KeyCode.SPACE)) {
-				pauseOrContinue();
-			}
-		
-	    }
+	private class KeyProcess implements EventHandler<KeyEvent> {
+
+        @Override
+        public void handle(KeyEvent event) {
+            KeyCode keyCode = event.getCode();
+
+
+            if(event.getEventType() == KeyEvent.KEY_RELEASED) {
+                if(keyCode.equals(KeyCode.SPACE)) {
+                    pauseOrContinue();
+                }
+                if(adventureself != null) adventureself.released(keyCode);
+            }else if(event.getEventType() == KeyEvent.KEY_PRESSED) {
+                if(adventureself != null) {
+                	adventureself.pressed(keyCode);
+                }
+            }
+        }
     }
+	
 	
 	public void pauseOrContinue() {
 		if(running) {
