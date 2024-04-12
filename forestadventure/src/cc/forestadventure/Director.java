@@ -1,5 +1,6 @@
 package cc.forestadventure;
 
+import cc.forestadventure.scene.GameScene;
 import cc.forestadventure.scene.Index;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ public class Director {
 	
 	private static Director instance = new Director();
 	private Stage stage;
+	private GameScene gameScene = new GameScene();
 	
 	private Director() {}
 	
@@ -42,7 +44,7 @@ public class Director {
 	}
 	
 	public void gameStart() {
-		
+		gameScene.init(stage);
 	}
 
 }
