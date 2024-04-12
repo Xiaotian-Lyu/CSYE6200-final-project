@@ -5,7 +5,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Sprite {
+public abstract class Sprite {
 	 Image image;
 	    double x, y, width, height;
 	    GameScene gameScene;
