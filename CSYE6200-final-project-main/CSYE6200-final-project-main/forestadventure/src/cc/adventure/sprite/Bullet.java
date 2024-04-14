@@ -121,4 +121,22 @@ public class Bullet extends Role {
 	            impactVine(vine);
 	        }
 	    }
+	    
+	  //newly added
+	    public boolean impactBoulder(Boulder boulder) {
+	        if (boulder != null && getContour().intersects(boulder.getContour())) {
+	            alive = false;
+	            return true;
+	        }
+	        return false;
+	    }
+
+	  //newly added
+	    public void impactBoulder(List<Boulder> boulders) {
+
+	        for (int i = 0; i < boulders.size(); i++) {
+	        	Boulder boulder = boulders.get(i);
+	            impactBoulder(boulder);
+	        }
+	    }
 }

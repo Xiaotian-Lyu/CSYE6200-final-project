@@ -189,6 +189,7 @@ public class Character extends Role{
     }
     public boolean impactCharacter(Sprite sprite) {
         if(sprite != null && !sprite.equals(this) && getContour().intersects(sprite.getContour())) {
+    	
             x = oldx;
             y = oldy;
             return true;
