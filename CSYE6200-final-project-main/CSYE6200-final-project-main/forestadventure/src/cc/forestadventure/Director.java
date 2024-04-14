@@ -39,8 +39,8 @@ public class Director {
 		
 	}
 	
-	public void gameOver() {
-		
+	public void gameOver(boolean success) {
+		gameScene.clear(stage);
 	}
 	
 	public void gameStart() {

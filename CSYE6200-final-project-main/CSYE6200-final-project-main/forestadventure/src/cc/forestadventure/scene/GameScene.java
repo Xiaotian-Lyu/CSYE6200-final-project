@@ -33,7 +33,7 @@ public class GameScene {
 	private boolean running = false;
 	
 	private Background background = new Background();
-	private Character self = new Character(949, 928, Group.green, Direction.stop, Direction.down,this);//the size of picture not sure yet
+	private Character self = null; //newly added
 	public List<Bullet> bullets = new ArrayList<>();
     public List<Character> characters = new ArrayList<>();
     public List<Explosion> explosion = new ArrayList<>();
@@ -88,7 +88,13 @@ public class GameScene {
        graphicsContext.setFont(new Font(10));
        graphicsContext.fillText("Number of Monsters：" + characters.size(), 200, 60);
        //graphicsContext.fillText("Number of Bullets子弹的数量：" + bullets.size(), 200, 90);
-		}
+       
+       if(self.isAlive()) {//newly added
+    	   Director.getInstance().gameOver(false);
+       } else if(characters.isEmpty()){
+    	   Director.getInstance().gameOver(true);
+       }
+   }
 		
 	
 	
@@ -98,6 +104,7 @@ public class GameScene {
 		stage.getScene().setOnKeyReleased(keyProcess);
 		stage.getScene().setOnKeyPressed(keyProcess);
 		running = true;
+		self = new Character(949, 928, Group.green, Direction.stop, Direction.down,this);//the size of picture not sure yet //newly added
 		initSprite();
 		refresh.start();
 	}
@@ -126,9 +133,16 @@ public class GameScene {
 	}
 	
 	public void clear(Stage stage) {
-		stage.getScene().
+		stage.getScene().removeEventHandler(KeyEvent.KEY_PRESSED, keyProcess);
 		stage.getScene().removeEventHandler(KeyEvent.KEY_RELEASED, keyProcess);
 		refresh.stop();
+		self = null;
+		characters.clear();
+		bullets.clear();
+		vines.clear();
+		explosion.clear();
+		boulders.clear();
+		shrubs.clear();
 	}
 	
 	private class Refresh extends AnimationTimer {
