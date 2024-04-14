@@ -82,8 +82,43 @@ public class Bullet extends Role {
 	    }
 	    
 	    public void paint(GraphicsContext graphicsContext) {
+	    	  if (!alive) {
+	              gameScene.bullets.remove(this);
+	              gameScene.explosion.add(new Explosion(x, y, gameScene));
+	              //SoundEffect.play("/sound/explosion.wav");
+	              
+	              return;
+	          }
 	    	super.paint(graphicsContext);
 	    	move();
 	    }
-	    
+	    public boolean impactCharacter(Character character) {
+	        if (character != null && !character.group.equals(this.group) && getContour().intersects(character.getContour())) {
+	        	character.setAlive(false);
+	            alive = false;
+	            return true;
+	        }
+	        return false;
+	    }
+	    public void impactCharacter(List<Character> characters) {
+	        for (Character c : characters) {
+	            impactCharacter(c);
+	        }
+	    }
+	    public boolean impactVine(Vine vine) {
+	        if (vine != null && getContour().intersects(vine.getContour())) {
+	            alive = false;
+	            gameScene.vines.remove(vine);
+	            return true;
+	        }
+	        return false;
+	    }
+
+	    public void impactVine(List<Vine> vines) {
+
+	        for (int i = 0; i < vines.size(); i++) {
+	        	Vine vine = vines.get(i);
+	            impactVine(vine);
+	        }
+	    }
 }

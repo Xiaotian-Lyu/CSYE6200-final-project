@@ -1,6 +1,7 @@
 package cc.adventure.sprite;
 
 
+import java.util.List;
 import java.util.Random;
 
 import cc.forestadventure.Director;
@@ -11,14 +12,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
-public class Adventure extends Role{
+public class Character extends Role{
 	
 	Direction pdir;
 	boolean keyup, keydown, keyleft, keyright;
     double oldx, oldy;
     public static Random random = new Random();
 	
-    public Adventure(double x, double y, Group group, Direction dir,Direction pdir, GameScene gameScene) {
+    public Character(double x, double y, Group group, Direction dir,Direction pdir, GameScene gameScene) {
 		super(x, y, 60, 60, group, dir, gameScene);
 		// the size 60-60 match the picture
 		// TODO Auto-generated constructor stub
@@ -58,7 +59,7 @@ public class Adventure extends Role{
     
     
     
-    //release keyborod
+    //release keyborod, move and open fire
     public void released(KeyCode keyCode) {
         switch (keyCode) {
             case F:
@@ -118,7 +119,7 @@ public class Adventure extends Role{
         if(y > Director.HEIGHT - height - 30) y = Director.HEIGHT - height - 30;
 
         if(group.equals(Group.red)) {
-            int i = random.nextInt(60);
+            int i = random.nextInt(40);
             switch (i) {
                 case 15:
                     Direction d[] = Direction.values();
@@ -131,8 +132,16 @@ public class Adventure extends Role{
         }
     }
     
+    
+    @Override
     public void paint(GraphicsContext graphicsContext) {
-        
+    	if (!alive) {
+            gameScene.bullets.remove(this);
+          
+            return;
+        }
+        super.paint(graphicsContext);
+        move();
         switch (pdir) {
             case up:
                 image = imageMap.get("up");
@@ -174,7 +183,26 @@ public class Adventure extends Role{
                 bullety = y + 25;
 
         }
+        
+        //SoundEffect.play("/sound/attack.mp3");
         gameScene.bullets.add(new Bullet(bulletx, bullety, group, pdir, gameScene));
     }
+    public boolean impactCharacter(Sprite sprite) {
+        if(sprite != null && !sprite.equals(this) && getContour().intersects(sprite.getContour())) {
+            x = oldx;
+            y = oldy;
+            return true;
+        }
+        return false;
+    }
+
+    public void impactCharacter(List<? extends Sprite> sprites) {
+        for (Sprite sprite :sprites) {
+        	impactCharacter(sprite);
+        }
+    }
+    
+    
+   
 
 }
