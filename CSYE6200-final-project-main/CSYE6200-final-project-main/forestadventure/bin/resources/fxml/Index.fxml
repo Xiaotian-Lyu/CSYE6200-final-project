@@ -4,15 +4,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cc.forestadventure.controller.IndexController">
    <children>
-      <ImageView fitHeight="300.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="750.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Load.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="startGame" fitHeight="54.0" fitWidth="122.0" layoutX="161.0" layoutY="232.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitedStartGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="startGame" fitHeight="54.0" fitWidth="122.0" layoutX="386.0" layoutY="581.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitedStartGame" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../StartGameButton.png" />
          </image>

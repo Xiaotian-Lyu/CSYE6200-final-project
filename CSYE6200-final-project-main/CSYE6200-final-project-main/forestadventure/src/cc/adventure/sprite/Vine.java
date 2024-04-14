@@ -5,6 +5,6 @@ package cc.adventure.sprite;
 
 	public class Vine extends Sprite {
 	    public Vine(double x, double y) {
-	        super(new Image("/resources/logo.png"), x, y, 31, 31);
+	        super(new Image("/resources/vine.png"), x, y, 31, 31);
 	    }
 	}

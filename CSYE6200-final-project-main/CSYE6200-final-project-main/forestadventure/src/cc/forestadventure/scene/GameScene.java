@@ -5,8 +5,10 @@ import java.util.List;
 
 import cc.adventure.sprite.Character;
 import cc.adventure.sprite.Explosion;
+import cc.adventure.sprite.Shrub;
 import cc.adventure.sprite.Vine;
 import cc.adventure.sprite.Background;
+import cc.adventure.sprite.Boulder;
 import cc.adventure.sprite.Bullet;
 import cc.forestadventure.Director;
 import cc.forestadventure.util.Direction;
@@ -36,27 +38,30 @@ public class GameScene {
     public List<Character> characters = new ArrayList<>();
     public List<Explosion> explosion = new ArrayList<>();
     public List<Vine>  vines = new ArrayList<>();
-	
+	public List<Boulder> boulders = new ArrayList<>();
+	public List<Shrub> shrubs = new ArrayList<>();
 		
 	private void paint() {
 		background.paint(graphicsContext);
 		self.paint(graphicsContext);
 		self.impactCharacter(characters);
 		self.impactCharacter(vines);
+		self.impactCharacter(boulders); //newly added
 		
 		 for (int i = 0; i < bullets.size(); i++) {
 	            Bullet bullet = bullets.get(i);
 	            bullet.paint(graphicsContext);
 	            bullet.impactCharacter(characters);
 	            bullet.impactVine(vines);
+	            bullet.impactBoulder(boulders); 
 	        }
 		 for (int i = 0; i < characters.size(); i++) {
 			 Character character = characters.get(i);
 			 character.paint(graphicsContext);
 			 character.impactCharacter(vines);
 	         character.impactCharacter(self);
-	         //tank.impact(rocks);
-	         character.impactCharacter(characters);
+	         character.impactCharacter(boulders); //newly added after Boulder Class is created
+	         character.impactCharacter(characters);//newly added
 	         
 	        }
 		 for (int i = 0; i < explosion.size(); i++) {
@@ -68,6 +73,16 @@ public class GameScene {
 	            Vine vine = vines.get(i);
 	            vine.paint(graphicsContext);
 	        }
+		 
+		 for (int i = 0; i < boulders.size(); i++) {
+			 Boulder boulder = boulders.get(i);
+			 boulder.paint(graphicsContext);
+		 }
+		 
+		 for (int i = 0; i < shrubs.size(); i++) {
+			 Shrub shrub = shrubs.get(i);
+			 shrub.paint(graphicsContext);
+		 }
 		 
        graphicsContext.setFill(Color.RED);
        graphicsContext.setFont(new Font(10));
@@ -98,9 +113,20 @@ public class GameScene {
             vines.add(vine1);
             vines.add(vine2);
         }
+        
+        for (int i = 0; i < 5; i++) {
+        	Boulder boulder = new Boulder(300 +i*80,300);
+        	boulders.add(boulder);
+        }
+        
+        for (int i = 0;i < 4; i++) {
+        	Shrub shrub = new Shrub(350 + i*50, 400);
+        	shrubs.add(shrub);
+        }
 	}
 	
 	public void clear(Stage stage) {
+		stage.getScene().
 		stage.getScene().removeEventHandler(KeyEvent.KEY_RELEASED, keyProcess);
 		refresh.stop();
 	}
