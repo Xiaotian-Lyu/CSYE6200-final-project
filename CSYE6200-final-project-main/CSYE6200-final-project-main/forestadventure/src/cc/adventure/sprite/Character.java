@@ -187,6 +187,7 @@ public class Character extends Role{
         //SoundEffect.play("/sound/attack.mp3");
         gameScene.bullets.add(new Bullet(bulletx, bullety, group, pdir, gameScene));
     }
+    
     public boolean impactCharacter(Sprite sprite) {
         if(sprite != null && !sprite.equals(this) && getContour().intersects(sprite.getContour())) {
     	
