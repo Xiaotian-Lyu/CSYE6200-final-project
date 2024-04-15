@@ -20,21 +20,23 @@ public class Character extends Role{
     public static Random random = new Random();
 	
     public Character(double x, double y, Group group, Direction dir,Direction pdir, GameScene gameScene) {
-		super(x, y, 60, 60, group, dir, gameScene);
-		// the size 60-60 match the picture
+		super(x, y, 130, 130, group, dir, gameScene);
+		// the size 130-130 match the picture
 		// TODO Auto-generated constructor stub
 		this.pdir = pdir;
-        speed = 5;
-        if(group.equals(Group.green)) {//adventure
+        
+        if(group.equals(Group.green)) {
+        	speed = 5;//the speed of adventure
             imageMap.put("up", new Image("resources/adventure-up.png"));
             imageMap.put("down", new Image("resources/adventure-1.png"));
             imageMap.put("left", new Image("resources/adventure-left.png"));
             imageMap.put("right", new Image("resources/adventure-rigrht.png"));
         } else {
-            imageMap.put("up", new Image("resources/monter-1.png"));
-            imageMap.put("down", new Image("resources/monter-1.png"));
-            imageMap.put("left", new Image("resources/monter-2.png"));
-            imageMap.put("right", new Image("resources/monter-2.png"));
+        	speed = 0.5;//the speed of bad person
+            imageMap.put("up", new Image("resources/badperson-up.png"));
+            imageMap.put("down", new Image("resources/badperson-1.png"));
+            imageMap.put("left", new Image("resources/badperson-left.png"));
+            imageMap.put("right", new Image("resources/badperson-right.png"));
         }
 		
 	}
