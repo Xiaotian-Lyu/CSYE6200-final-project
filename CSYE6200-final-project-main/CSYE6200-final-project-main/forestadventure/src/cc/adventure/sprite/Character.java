@@ -21,7 +21,7 @@ public class Character extends Role{
 	
     public Character(double x, double y, Group group, Direction dir,Direction pdir, GameScene gameScene) {
 		super(x, y, 60, 60, group, dir, gameScene);
-		// the size 130-130 match the picture
+		// the size 60-60 match the picture
 		// TODO Auto-generated constructor stub
 		this.pdir = pdir;
         
