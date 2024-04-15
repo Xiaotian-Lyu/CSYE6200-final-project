@@ -1,5 +1,6 @@
 package cc.forestadventure;
 
+import cc.forestadventure.scene.GameOver;
 import cc.forestadventure.scene.GameScene;
 import cc.forestadventure.scene.Index;
 import javafx.scene.Scene;
@@ -41,6 +42,7 @@ public class Director {
 	
 	public void gameOver(boolean success) {
 		gameScene.clear(stage);
+		GameOver.load(stage, success);
 	}
 	
 	public void gameStart() {

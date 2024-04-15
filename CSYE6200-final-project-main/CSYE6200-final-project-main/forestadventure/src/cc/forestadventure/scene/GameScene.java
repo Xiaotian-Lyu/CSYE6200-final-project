@@ -54,6 +54,7 @@ public class GameScene {
 	            bullet.impactCharacter(characters);
 	            bullet.impactVine(vines);
 	            bullet.impactBoulder(boulders); 
+	            bullet.impactCharacter(self);
 	        }
 		 for (int i = 0; i < characters.size(); i++) {
 			 Character character = characters.get(i);
