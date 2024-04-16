@@ -123,7 +123,7 @@ public class Bullet extends Role {
 	    }
 	    
 	  //newly added
-	    public boolean impactBoulder(Boulder boulder) {
+	    public boolean impactBoulder(Box boulder) {
 	        if (boulder != null && getContour().intersects(boulder.getContour())) {
 	            alive = false;
 	            return true;
@@ -132,10 +132,10 @@ public class Bullet extends Role {
 	    }
 
 	  //newly added
-	    public void impactBoulder(List<Boulder> boulders) {
+	    public void impactBoulder(List<Box> boulders) {
 
 	        for (int i = 0; i < boulders.size(); i++) {
-	        	Boulder boulder = boulders.get(i);
+	        	Box boulder = boulders.get(i);
 	            impactBoulder(boulder);
 	        }
 	    }
