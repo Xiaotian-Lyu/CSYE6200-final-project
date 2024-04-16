@@ -11,7 +11,7 @@
             <Image url="@../Load.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="startGame" fitHeight="54.0" fitWidth="122.0" layoutX="386.0" layoutY="581.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitedStartGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="startGame" fitHeight="100.0" fitWidth="250.0" layoutX="250.0" layoutY="528.0" onMouseClicked="#mouseClickedStartGame" onMouseEntered="#mouseEnteredStartGame" onMouseExited="#mouseExitedStartGame" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../StartGameButton.png" />
          </image>

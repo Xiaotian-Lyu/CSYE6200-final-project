@@ -5,10 +5,10 @@ import java.util.List;
 
 import cc.adventure.sprite.Character;
 import cc.adventure.sprite.Explosion;
-import cc.adventure.sprite.Shrub;
+import cc.adventure.sprite.Pine;
 import cc.adventure.sprite.Vine;
 import cc.adventure.sprite.Background;
-import cc.adventure.sprite.Boulder;
+import cc.adventure.sprite.Box;
 import cc.adventure.sprite.Bullet;
 import cc.forestadventure.Director;
 import cc.forestadventure.util.Direction;
@@ -38,22 +38,22 @@ public class GameScene {
     public List<Character> characters = new ArrayList<>();
     public List<Explosion> explosion = new ArrayList<>();
     public List<Vine>  vines = new ArrayList<>();
-	public List<Boulder> boulders = new ArrayList<>();
-	public List<Shrub> shrubs = new ArrayList<>();
+	public List<Box> boxes = new ArrayList<>();
+	public List<Pine> pines = new ArrayList<>();
 		
 	private void paint() {
 		background.paint(graphicsContext);
 		self.paint(graphicsContext);
 		self.impactCharacter(characters);
 		self.impactCharacter(vines);
-		self.impactCharacter(boulders); //newly added
+		self.impactCharacter(boxes); //newly added
 		
 		 for (int i = 0; i < bullets.size(); i++) {
 	            Bullet bullet = bullets.get(i);
 	            bullet.paint(graphicsContext);
 	            bullet.impactCharacter(characters);
 	            bullet.impactVine(vines);
-	            bullet.impactBoulder(boulders); 
+	            bullet.impactBoulder(boxes); 
 	            bullet.impactCharacter(self);
 	        }
 		 for (int i = 0; i < characters.size(); i++) {
@@ -61,7 +61,7 @@ public class GameScene {
 			 character.paint(graphicsContext);
 			 character.impactCharacter(vines);
 	         character.impactCharacter(self);
-	         character.impactCharacter(boulders); //newly added after Boulder Class is created
+	         character.impactCharacter(boxes); //newly added after Boulder Class is created
 	         character.impactCharacter(characters);//newly added
 	         
 	        }
@@ -75,14 +75,14 @@ public class GameScene {
 	            vine.paint(graphicsContext);
 	        }
 		 
-		 for (int i = 0; i < boulders.size(); i++) {
-			 Boulder boulder = boulders.get(i);
-			 boulder.paint(graphicsContext);
+		 for (int i = 0; i < boxes.size(); i++) {
+			 Box box = boxes.get(i);
+			 box.paint(graphicsContext);
 		 }
 		 
-		 for (int i = 0; i < shrubs.size(); i++) {
-			 Shrub shrub = shrubs.get(i);
-			 shrub.paint(graphicsContext);
+		 for (int i = 0; i < pines.size(); i++) {
+			 Pine pine = pines.get(i);
+			 pine.paint(graphicsContext);
 		 }
 		 
        graphicsContext.setFill(Color.RED);
@@ -90,7 +90,7 @@ public class GameScene {
        graphicsContext.fillText("Number of Monsters：" + characters.size(), 200, 60);
        //graphicsContext.fillText("Number of Bullets子弹的数量：" + bullets.size(), 200, 90);
        
-       if(self.isAlive()) {//newly added
+       if(!self.isAlive()) {//newly added
     	   Director.getInstance().gameOver(false);
        } else if(characters.isEmpty()){
     	   Director.getInstance().gameOver(true);
@@ -123,13 +123,15 @@ public class GameScene {
         }
         
         for (int i = 0; i < 5; i++) {
-        	Boulder boulder = new Boulder(300 +i*80,300);
-        	boulders.add(boulder);
+        	Box box = new Box(300 +i*60,300);
+        	boxes.add(box);
         }
         
         for (int i = 0;i < 4; i++) {
-        	Shrub shrub = new Shrub(350 + i*50, 400);
-        	shrubs.add(shrub);
+        	Pine pine1 = new Pine(290 + i*63*2, 400);
+        	Pine pine2 = new Pine(63 + i*63*2, 0);
+        	pines.add(pine1);
+        	pines.add(pine2);
         }
 	}
 	
@@ -142,8 +144,8 @@ public class GameScene {
 		bullets.clear();
 		vines.clear();
 		explosion.clear();
-		boulders.clear();
-		shrubs.clear();
+		boxes.clear();
+		pines.clear();
 	}
 	
 	private class Refresh extends AnimationTimer {
