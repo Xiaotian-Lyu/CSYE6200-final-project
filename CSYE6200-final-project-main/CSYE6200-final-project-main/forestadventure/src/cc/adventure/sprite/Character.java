@@ -32,7 +32,7 @@ public class Character extends Role{
             imageMap.put("left", new Image("resources/adventure-left.png"));
             imageMap.put("right", new Image("resources/adventure-rigrht.png"));
         } else {
-        	speed = 0.5;//the speed of bad person
+        	speed = 0.1;//the speed of bad person
             imageMap.put("up", new Image("resources/badperson-up.png"));
             imageMap.put("down", new Image("resources/badperson-1.png"));
             imageMap.put("left", new Image("resources/badperson-left.png"));

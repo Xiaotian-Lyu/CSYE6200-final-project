@@ -111,7 +111,7 @@ public class GameScene {
 	}
 	
 	private void initSprite() {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 1; i++) {
             Character character = new Character(200 + i * 80, 100,Group.red, Direction.stop, Direction.down, this);//monster
             characters.add(character);
         }
