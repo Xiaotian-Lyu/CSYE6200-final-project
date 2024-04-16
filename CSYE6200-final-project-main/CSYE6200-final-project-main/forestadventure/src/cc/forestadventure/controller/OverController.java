@@ -31,7 +31,7 @@ public class OverController {
     
     //if win change the text
     public void flagSuccess() {
-        flag.setImage(new Image("resources/GameWinText.png"));
+        flag.setImage(new Image("resources/win-txt"));
     }
 
 }
