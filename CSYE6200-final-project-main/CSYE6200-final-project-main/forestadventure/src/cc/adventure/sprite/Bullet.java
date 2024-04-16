@@ -13,7 +13,7 @@ public class Bullet extends Role {
 	 public Bullet(double x, double y, Group group, Direction dir, GameScene gameScene) {
 	        super(x, y, 0, 0, group, dir, gameScene);
 	        // the speed of the bullet
-	        speed = 10;
+	        speed = 1;
 	        //different direction of bullet
 	        if (dir.equals(Direction.up) || dir.equals(Direction.down)) {
 	            width = 10;
