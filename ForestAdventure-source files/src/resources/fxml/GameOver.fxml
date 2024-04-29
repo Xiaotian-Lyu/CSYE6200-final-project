@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cc.forestadventure.controller.OverController">
+   <children>
+      <ImageView fitHeight="750.0" fitWidth="750.0">
+         <image>
+            <Image url="@../endbackgroud.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="toIndex" fitHeight="150.0" fitWidth="200.0" layoutX="292.0" layoutY="425.0" onMouseClicked="#mouseClickedToIndex" onMouseEntered="#mouseEnteredToIndex" onMouseExited="#mouseExitedToIndex" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../restartTest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="flag" fitHeight="112.0" fitWidth="359.0" layoutX="219.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../gameover-txt.png" />
+         </image>
+      </ImageView>
+            <Text fx:id="completionTimeText" layoutX="300.0" layoutY="250.0" />
+              <Text fx:id="remainingEnemiesText" layoutX="20.0" layoutY="40.0" />
+   </children>
+</AnchorPane>
