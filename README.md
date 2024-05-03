@@ -11,10 +11,6 @@
 ![info6200-09](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/b2ba30dd-dc8a-4742-8ffb-be2c43619975)
 ![info6200-10](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/e8577353-1225-447f-9afa-761956ff3f33)
 ![info6200-11](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/d82ba582-d2a3-4789-ae8c-c13054526790)
-
-![image](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/1b369773-e9a1-40e4-b0d8-ed6ad6258c6e)
-![image](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/dca30442-874d-451a-b82a-76c1a395e7b0)
-![image](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/bfa83b40-5abf-4f72-b321-4e4c244ee50e)
-
+![11-11](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/4943bdbb-cd18-400a-9787-5668e26069f8)
 ![info6200-12](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/b95d9f5d-81e4-4465-a3f9-a18e6eb7b5e2)
 ![info6200-13](https://github.com/Xiaotian-Lyu/DigitalGameProject-ForestAdventure/assets/145813098/e16a37fa-7d87-4cf0-b23e-1c7a2240154b)
